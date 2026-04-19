@@ -30,8 +30,8 @@ Twelve agents, each with a single job:
 | Domain Researcher | daily 7am | Opus | Researches one market topic per run; appends findings to product-notes.md; files proposals if warranted |
 | System Reviewer | daily 9pm | Opus | Audits last 24h of agent logs; scores 7 dimensions; identifies problems; files proposals; syncs changes to this public repo |
 | **Codebase Auditor** | every 3h | **Opus** | Reads actual source files in one area per run; files AUDIT-NNNN tasks for real violations (specific file, line, fix) |
-| **Main CI Fixer** | every 2 min* | **Opus** | Trigger-based — only runs when main CI fails; investigates failure, understands original intent, opens a fix PR |
-| **PR CI Fixer** | every 2 min* | **Opus** | Trigger-based — only runs when a PR's CI fails; investigates, fixes, pushes directly to the PR branch |
+| **Main CI Fixer** | every 2 min* | Sonnet | Trigger-based — only runs when main CI fails; investigates failure, understands original intent, opens a fix PR |
+| **PR CI Fixer** | every 2 min* | Sonnet | Trigger-based — only runs when a PR's CI fails; investigates, fixes, pushes directly to the PR branch |
 | Log Trim | every 4h | Sonnet | Archives agent-log.md entries older than 24h to a monthly archive file |
 
 *CI Fixers fire every 2 min but use a `preCommand` to skip the Claude spawn if no trigger file exists — near-zero cost when idle.

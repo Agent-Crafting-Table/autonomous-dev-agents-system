@@ -970,8 +970,6 @@ PR CI Fixer:      */2 * * * *                  (every 2 min — trigger-based, a
 - System Reviewer — auditing logs and scoring 7 dimensions requires careful analysis
 - Reviewer — evaluating code correctness against nuanced standards requires careful judgment
 - Codebase Auditor — finding real violations (not false positives) requires careful reading and judgment
-- Main CI Fixer — detective work across commits, tests, PRDs, and intent requires reasoning
-- PR CI Fixer — same as Main CI Fixer; the fix must be correct, not just compiling
 
 **Use Sonnet for agents that execute against clear instructions:**
 - Developer — coding is structured execution once the TRD is approved
@@ -979,10 +977,10 @@ PR CI Fixer:      */2 * * * *                  (every 2 min — trigger-based, a
 - Merge Watcher — mechanical git operations with some judgment
 - Industry Researcher — search and summarization
 - Log Trim — mechanical file operations
+- Main CI Fixer — the context is handed to it (failed log + task + PRD); fixing tests is structured execution
+- PR CI Fixer — same as Main CI Fixer
 
 Sonnet is faster and cheaper. Opus catches subtle planning mistakes. Mismatch in either direction costs you: Sonnet on Product Manager produces weak PRDs; Sonnet on Reviewer misses subtle standards violations; Opus on Log Trim is pure waste.
-
-> **Note on CI Fixers:** Even though they fire every 2 minutes, they almost never spawn Claude — the preCommand checks for the trigger file and skips if absent. When they do fire, the task (understand intent → fix correctly → push) genuinely benefits from Opus quality.
 
 ### The preCommand pattern
 
